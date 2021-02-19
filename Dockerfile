@@ -6,7 +6,7 @@ RUN apk add --update nodejs npm
 WORKDIR /usr/dockerfe
 
 COPY ./package.json .
-RUN npm Install
+RUN npm install
 
 COPY . .
 RUN npm run build

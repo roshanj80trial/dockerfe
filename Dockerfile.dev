@@ -6,7 +6,7 @@ WORKDIR /usr/dockerfe
 
 # Install dependencies
 COPY ./package.json .
-RUN npm Install
+RUN npm install
 
 COPY . .
 
