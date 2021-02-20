@@ -1,13 +1,9 @@
-FROM alpine
+FROM node:alpine
 
-RUN apk add --update nodejs npm
+WORKDIR '/app'
 
-WORKDIR /app
-
-# Install dependencies
-COPY ./package.json .
+COPY package.json .
 RUN npm install
-
 
 COPY . .
 
