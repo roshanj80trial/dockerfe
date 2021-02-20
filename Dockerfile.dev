@@ -2,7 +2,7 @@ FROM alpine
 
 RUN apk add --update nodejs npm
 
-WORKDIR /usr/dockerfe
+WORKDIR /app
 
 # Install dependencies
 COPY ./package.json .
