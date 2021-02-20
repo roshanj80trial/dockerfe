@@ -1,0 +1,22 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t roshanj80/dockerfe -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true roshanj80/dockerfe npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'dockertest'
+  env: 'Dockertest-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-126018334697'
+  bucket_path: 'dockertest'
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  on:
+    branch: main
